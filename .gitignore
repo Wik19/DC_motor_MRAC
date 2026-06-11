@@ -1,2 +1,6 @@
 build/
+
 *.csv
+*.png
+
+details.md

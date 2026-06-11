@@ -2,8 +2,7 @@
 #include <array>
 #include <cstddef>
 
-// One fixed-step RK4 update. `f` maps a state to its derivative (inputs are
-// expected to be bound by the caller, e.g. via a lambda).
+// One fixed-step RK4 update
 template <std::size_t N, typename Deriv>
 std::array<double, N> rk4_step(const std::array<double, N>& x, double dt, Deriv f) {
     std::array<double, N> tmp;

@@ -11,8 +11,10 @@ endif()
 add_executable(sim
     src/main.cpp
     src/motor.cpp
+    src/trajectory.cpp
     src/reference_model.cpp
     src/controller.cpp
+    src/mrac.cpp
     src/simulation.cpp
 )
 target_include_directories(sim PRIVATE include)

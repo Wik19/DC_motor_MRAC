@@ -1,9 +1,6 @@
 #pragma once
 #include <array>
 
-// Physical parameters of the geared PMDC motor (PM1R).
-// Defaults are typical values for a motor of this class; refine when real
-// numbers are available. Everything is in SI units (rad, rad/s).
 struct MotorParams {
     double eta = 1.0 / 51.0;  // gear ratio, link/motor (1:51)
     double R   = 2.0;         // armature resistance [Ohm]
@@ -12,14 +9,13 @@ struct MotorParams {
     double J_m = 1.0e-5;      // motor inertia [kg m^2]
     double b   = 1.0e-5;      // viscous friction [Nm s/rad]
 
-    // Link (rod), balanced about its rotation axis: its inertia follows from
-    // the rod mass and length, J_l = (1/12) m L^2 (uniform rod about centre).
-    double rod_mass   = 0.6;  // [kg]
+    // J_l = (1/12) m L^2 (uniform rod about centre).
+    double rod_mass   = 0.5;  // [kg]
     double rod_length = 1.0;  // [m]
 
     double J_l() const { return rod_mass * rod_length * rod_length / 12.0; }
 
-    // Inertia reflected to the motor shaft, J = J_m + eta^2 J_l.
+    // J = J_m + eta^2 J_l.
     double J() const { return J_m + eta * eta * J_l(); }
 };
 
